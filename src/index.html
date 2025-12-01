@@ -6,6 +6,41 @@
   <title>Konbini</title>
 </head>
 <body>
-  <h1>Hello World</h1>
+  <aside class="sidebar">
+    <div class="topbar">
+      <div class="time">Day 1 - 12:00am</div>
+      <div class="money">0$</div>
+      <div class="store-status" data-action="toggleStore">Closed</div>
+    </div>
+    <nav class="navigation">
+      <div class="navigation__item" data-action="switchScreen" data-action-payload="shop"><span class="fas fa-shopping-cart"></span><span>Shop</span></div>
+      <div class="navigation__item" data-action="switchScreen" data-action-payload="register"><span class="fas fa-cash-register"></span><span>Register</span></div>
+      <div class="navigation__item" data-action="switchScreen" data-action-payload="warehouse"><span class="fas fa-warehouse"></span><span>Warehouse</span></div>
+      <div class="navigation__item" data-action="switchScreen" data-action-payload="settings"><span class="fas fa-gear"></span><span>Settings</span></div>
+    </nav>
+  </aside>
+  <main class="content">
+    <div class="screen" data-screen="shop">
+      <h1>Home</h1>
+    </div>
+    <div class="screen" data-screen="register">
+      <h1>Register</h1>
+    </div>
+    <div class="screen" data-screen="warehouse">
+      <h1>Warehouse</h1>
+      <div class="warehouse"></div>
+    </div>
+    <div class="screen" data-screen="settings">
+      <h1>Settings</h1>
+      <ul>
+        <li>Music</li>
+        <li>Sound Effects</li>
+        <li>Vibration</li>
+        <li>Save</li>
+        <li>Load</li>
+        <li>Reset all</li>
+      </ul>
+    </div>
+  </main>
 </body>
 </html>

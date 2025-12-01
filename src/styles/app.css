@@ -1,0 +1,138 @@
+:root {
+  --c-background: #161420;
+  --c-elevation-1: rgba(255, 255, 255, .05);
+  --c-foreground: #ccc;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-areas: "sidebar content";
+  background-color: var(--c-background);
+  color: var(--c-foreground);
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: var(--c-elevation-1);
+  padding: 1rem;
+}
+
+.topbar {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "left center right";
+  
+  .day {
+    justify-self: start;
+  }
+}
+
+.navigation {
+  .navigation__item {
+    padding: .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    .fas {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+    }
+    
+    &:hover {
+      background-color: var(--c-elevation-1);
+    }
+  }
+}
+
+.content {
+  grid-area: content;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.screen {
+  display: none;
+  
+  &.screen--active {
+    display: block;
+  }
+}
+
+.warehouse {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  
+  .warehouse__product {
+    canvas {
+      width: 100%;
+    }
+  }
+}
+
+.product {
+  .product__buy {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .product__barcode {
+    aspect-ratio: 16/9;
+    
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    grid-template-columns: auto;
+    grid-template-rows: auto 48px;
+    grid-template-areas: 
+      "content"
+      "sidebar";
+    padding-top: 48px;
+  }
+  
+  .sidebar {
+    padding: 0;
+  }
+  
+  .topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    background: var(--c-elevation-1);
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: center;
+    
+    .navigation__item {
+      padding: 0;
+      border-radius: 0;
+      
+      span:not(.fas) {
+        display: none;
+      }
+    }
+  }
+}
