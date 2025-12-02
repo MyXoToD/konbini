@@ -40,7 +40,7 @@ jobs:
 
       # Build project with Parcel
       - name: Build project
-        run: npm run build
+        run: npx parcel build src/index.html --public-url /konbini/
 
       # Deploy to gh-pages
       - name: Setup Pages
