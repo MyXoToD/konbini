@@ -1,7 +1,9 @@
 :root {
   --c-background: #161420;
-  --c-elevation-1: rgba(255, 255, 255, .05);
+  --c-elevation-1: rgba(255, 255, 255, 0.05);
   --c-foreground: #ccc;
+  --topbar-height: 64px;
+  --menubar-height: 64px;
 }
 
 * {
@@ -13,7 +15,7 @@
 body {
   display: grid;
   grid-template-columns: 300px auto;
-  grid-template-areas: "sidebar content";
+  grid-template-areas: 'sidebar content';
   background-color: var(--c-background);
   color: var(--c-foreground);
   font-family: sans-serif;
@@ -30,8 +32,8 @@ body {
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: "left center right";
-  
+  grid-template-areas: 'left center right';
+
   .day {
     justify-self: start;
   }
@@ -39,10 +41,10 @@ body {
 
 .navigation {
   .navigation__item {
-    padding: .5rem;
+    padding: 0.5rem;
     border-radius: 5px;
     cursor: pointer;
-    
+
     .fas {
       display: inline-block;
       width: 48px;
@@ -50,7 +52,7 @@ body {
       line-height: 48px;
       text-align: center;
     }
-    
+
     &:hover {
       background-color: var(--c-elevation-1);
     }
@@ -65,7 +67,7 @@ body {
 
 .screen {
   display: none;
-  
+
   &.screen--active {
     display: block;
   }
@@ -75,7 +77,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  
+
   .warehouse__product {
     canvas {
       width: 100%;
@@ -84,14 +86,26 @@ body {
 }
 
 .product {
+  .product__header {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 1rem;
+    align-items: center;
+
+    .product__name {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+  }
+
   .product__buy {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .product__barcode {
     aspect-ratio: 16/9;
-    
+
     canvas {
       width: 100%;
       height: 100%;
@@ -102,36 +116,42 @@ body {
 @media screen and (max-width: 800px) {
   body {
     grid-template-columns: auto;
-    grid-template-rows: auto 48px;
-    grid-template-areas: 
-      "content"
-      "sidebar";
-    padding-top: 48px;
+    grid-template-rows: var(--topbar-height) auto var(--menubar-height);
+    grid-template-areas:
+      'topbar'
+      'content'
+      'sidebar';
   }
-  
+
   .sidebar {
     padding: 0;
   }
-  
+
   .topbar {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 48px;
+    height: var(--topbar-height);
     background: var(--c-elevation-1);
   }
-  
+
   .navigation {
     display: flex;
     justify-content: center;
-    
+
     .navigation__item {
       padding: 0;
       border-radius: 0;
-      
+
       span:not(.fas) {
         display: none;
+      }
+
+      .fas {
+        width: var(--menubar-height);
+        height: var(--menubar-height);
+        line-height: var(--menubar-height);
       }
     }
   }

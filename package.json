@@ -1,0 +1,39 @@
+{
+  "name": "konbini",
+  "version": "0.0.1",
+  "description": "Run your own konbini right in the browser",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyXoToD/konbini.git"
+  },
+  "keywords": [
+    "game",
+    "idle",
+    "konbini",
+    "javascript"
+  ],
+  "author": "Maximilian Boll",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MyXoToD/konbini/issues"
+  },
+  "homepage": "https://github.com/MyXoToD/konbini#readme",
+  "staticFiles": {
+    "staticPath": "./src/assets",
+    "watcherGlob": "**"
+  },
+  "devDependencies": {
+    "canvas": "^3.2.0",
+    "jsbarcode": "^3.12.1",
+    "nodemon": "^3.1.11",
+    "parcel": "^2.16.1",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "prettier": "^3.7.3",
+    "typescript": "^5.9.3"
+  }
+}
