@@ -1,8 +1,9 @@
 import { createCanvas } from 'canvas';
 import JsBarcode from 'jsbarcode';
-import { Events } from './events';
-import { Product, ProductPrices } from './models/product.interface';
-import { State } from './state';
+import { Events } from './events.js';
+import { Product, ProductPrices } from './models/product.interface.js';
+import { State } from './state.js';
+import { formatCurrency, formatNumber } from './utils.js';
 
 export class ProductComponent {
   id = 0;
@@ -32,18 +33,37 @@ export class ProductComponent {
         </div>
         <div class="product__name">${this.name}</div>
       </div>
-      <div class="product__stock">${this.inStock}x</div>
+      <table class="product__amounts">
+        <thead>
+          <tr>
+            <th>In Storage</th>
+            <th>On Shelves</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="in-storage">${formatNumber(this.inStock)}</td>
+            <td class="on-shelves">0</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="product__buy">
         <select>
           <option value="1">1</option>
           <option value="5">5</option>
           <option value="10">10</option>
+          <option value="100">100</option>
         </select>
-        <button>Buy</button>
-        <div class="product__price">for ${this.prices.wholesale.toLocaleString('en-Us')}$</div>
+        <button>${formatCurrency(this.prices.wholesale)}</button>
       </div>
       <div class="product__barcode"></div>
     </div>`;
+
+    if (!State.canAfford(this.prices.wholesale * this.amountToBuy)) {
+      this.warehouseBox
+        .querySelector('.product__buy')!
+        .classList.add('product__buy--disabled');
+    }
 
     this.warehouseBox
       .querySelector('.product__buy button')!
@@ -51,11 +71,7 @@ export class ProductComponent {
 
     this.warehouseBox
       .querySelector('.product__buy select')
-      ?.addEventListener('change', (event) => {
-        let newValue = parseInt((event.target as HTMLInputElement).value) ?? 1;
-
-        this.amountToBuy = newValue;
-      });
+      ?.addEventListener('change', (event) => this.updateAmountToBuy(event));
 
     let barcode = createCanvas(0, 0);
     JsBarcode(barcode, this.name + ': ' + this.prices.wholesale, {
@@ -68,9 +84,42 @@ export class ProductComponent {
       .append(barcode as unknown as Node);
 
     Events.subscribe('itemBought', () => {
-      this.warehouseBox.querySelector('.product__stock')!.textContent =
-        `${this.inStock}x`;
+      this.warehouseBox.querySelector(
+        '.product__amounts .in-storage',
+      )!.textContent = formatNumber(this.inStock);
+      if (!State.canAfford(this.prices.wholesale * this.amountToBuy)) {
+        this.warehouseBox
+          .querySelector('.product__buy')!
+          .classList.add('product__buy--disabled');
+      } else {
+        this.warehouseBox
+          .querySelector('.product__buy')!
+          .classList.remove('product__buy--disabled');
+      }
     });
+  }
+
+  updateAmountToBuy(event: Event) {
+    let newValue = parseInt((event.target as HTMLInputElement).value) ?? 1;
+
+    this.warehouseBox.querySelector('.product__buy button')!.textContent = (
+      newValue * this.prices.wholesale
+    ).toLocaleString('en-Us', {
+      style: 'currency',
+      currency: 'USD',
+    });
+
+    this.amountToBuy = newValue;
+
+    if (!State.canAfford(this.prices.wholesale * this.amountToBuy)) {
+      this.warehouseBox
+        .querySelector('.product__buy')!
+        .classList.add('product__buy--disabled');
+    } else {
+      this.warehouseBox
+        .querySelector('.product__buy')!
+        .classList.remove('product__buy--disabled');
+    }
   }
 
   renderWarehouseBox() {
@@ -78,6 +127,10 @@ export class ProductComponent {
   }
 
   buy() {
+    if (!State.canAfford(this.prices.wholesale * this.amountToBuy)) {
+      return;
+    }
+
     this.inStock += this.amountToBuy;
     State.money -= this.amountToBuy * this.prices.wholesale;
     Events.notify('itemBought');

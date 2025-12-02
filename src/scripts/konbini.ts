@@ -1,8 +1,8 @@
-import { State } from './state';
+import { State } from './state.js';
 
 export class Konbini {
   lastTimestamp = null;
-  defaultScreen = 'shop';
+  defaultScreen = 'warehouse';
 
   constructor() {
     State.initialize();

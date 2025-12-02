@@ -1,6 +1,6 @@
-import { PRODUCTS } from './data/products';
-import { Product } from './models/product.interface';
-import { ProductComponent } from './product';
+import { PRODUCTS } from './data/products.js';
+import { Product } from './models/product.interface.js';
+import { ProductComponent } from './product.js';
 
 export class State {
   static money = 0;
@@ -54,6 +54,10 @@ export class State {
     const minutes = this.daytime.getMinutes().toString().padStart(2, '0');
 
     timeWrapper.textContent = `Day ${this.day} - ${hours}:${minutes}${period}`;
+  }
+
+  static canAfford(amount: number) {
+    return this.money >= amount;
   }
 
   static setMoney(newAmount: number) {
