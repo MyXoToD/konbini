@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap');
+
+:root {
+  --sidebar-width: 300px;
+
+  --c-elevation-0: #121418;
+  --c-elevation-1: rgba(255, 255, 255, 0.05);
+
+  --c-text: #ccc;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  background-color: var(--c-elevation-0);
+  color: var(--c-text);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-areas: 'sidebar main';
+  height: 100vh;
+  font-family: 'Rubik', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

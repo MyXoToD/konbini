@@ -1,0 +1,47 @@
+<h1>Settings</h1>
+
+<div class="settings">
+  <div class="settings__section">
+    <h2>{{ 'settings.sections.general' | translate }}</h2>
+
+    <div class="setting">
+      <label for="setting-language" class="setting__label">{{
+        'settings.language.label' | translate
+      }}</label>
+      <select id="setting-language" (change)="changeLanguage($event)">
+        @for (language of languages; track language) {
+          <option value="{{ language }}">
+            {{ `languages.${language}` | translate }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <ul>
+      <li>Currentcy</li>
+      <li>Theme</li>
+      <li>Save Game</li>
+      <li>Load Game</li>
+    </ul>
+  </div>
+
+  <div class="settings__section">
+    <h2>Sound Settings</h2>
+
+    <ul>
+      <li>Music On/Off</li>
+      <li>Music Volume</li>
+      <li>Sound Effects On/Off</li>
+      <li>Sound Effects Volume</li>
+      <li>Vibration On/Off</li>
+    </ul>
+  </div>
+
+  <div class="settings__section">
+    <h2>Danger Zone</h2>
+
+    <ul>
+      <li>Hard Reset Game</li>
+    </ul>
+  </div>
+</div>

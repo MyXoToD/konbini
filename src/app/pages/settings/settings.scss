@@ -1,0 +1,21 @@
+:host {
+  display: contents;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+
+  &__section {
+    padding: 1rem;
+    background-color: var(--c-elevation-1);
+    border-radius: 0.5rem;
+  }
+}
+
+.setting {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 1rem;
+}

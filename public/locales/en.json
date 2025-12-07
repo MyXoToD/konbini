@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "warehouse": "Warehouse",
+    "settings": "Settings"
+  },
+  "money": "Money",
+  "settings": {
+    "sections": {
+      "general": "General"
+    },
+    "language": {
+      "label": "Language"
+    }
+  },
+  "languages": {
+    "en": "English",
+    "de": "German",
+    "jp": "Japanese"
+  },
+  "translation": {
+    "missingTranslation": "Missing translation"
+  }
+}

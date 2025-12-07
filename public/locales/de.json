@@ -1,0 +1,23 @@
+{
+  "navigation": {
+    "warehouse": "Lager",
+    "settings": "Einstellungen"
+  },
+  "money": "Geld",
+  "settings": {
+    "sections": {
+      "general": "Allgemein"
+    },
+    "language": {
+      "label": "Sprache"
+    }
+  },
+  "languages": {
+    "en": "Englisch",
+    "de": "Deutsch",
+    "jp": "Japanisch"
+  },
+  "translation": {
+    "missingTranslation": "Fehlende Übersetzung"
+  }
+}

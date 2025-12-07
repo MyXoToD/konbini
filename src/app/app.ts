@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { Sidebar } from './shared/layout/sidebar/sidebar';
 
 @Component({
   selector: 'konbini-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Sidebar],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('konbini');
+  private translate = inject(TranslateService);
+  languages = ['en', 'de', 'jp'];
+
+  constructor() {
+    this.translate.addLangs(['en', 'de', 'jp']);
+    this.translate.setFallbackLang('en');
+    this.translate.use('en');
+  }
 }

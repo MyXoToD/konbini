@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "name": "Bread",
+  "price": 2.5,
+  "description": "Freshly baked bread",
+  "unlocked": true
+}
