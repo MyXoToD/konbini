@@ -1,6 +1,7 @@
 <div class="sidebar">
   <div class="topbar">
-    <div>{{ 'money' | translate }}: {{ state.money() }}</div>
+    <div class="topbar__title">Konbini</div>
+    <div>{{ 'money' | translate }}: {{ state.moneyFormatted() }}</div>
     <button (click)="addMoney()">Add Money</button>
     <div>Day: {{ state.day() }}</div>
     <div>Time: {{ state.daytime() }}</div>

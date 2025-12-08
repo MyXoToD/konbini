@@ -1,6 +1,7 @@
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Product } from '../products/models/product.interface';
 import { ProductsService } from '../products/products.service';
+import { formatCurrency } from './utils';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,9 @@ export class GameState {
 
   private _money = signal<number>(1000);
   readonly money = this._money.asReadonly();
+  readonly moneyFormatted = computed(() => {
+    return formatCurrency(this._money());
+  });
   private _products = signal<Product[]>(this._productsService.getAllProducts());
   readonly products = this._products.asReadonly();
   private _daytime = signal<Date>(new Date());

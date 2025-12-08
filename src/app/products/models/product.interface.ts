@@ -1,4 +1,5 @@
 import { ProductPrices } from './productPrices.interface';
+import { StorageType } from './storageType.enum';
 
 export interface Product {
   id: number;
@@ -7,5 +8,6 @@ export interface Product {
   description: string;
   icon: string;
   inStock: number;
+  storageType: StorageType;
   unlocked: boolean;
 }

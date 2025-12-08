@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { GameState } from '../../shared/GameState';
-import { Product } from '../../products/models/product.interface';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Product } from '../../products/models/product.interface';
+import { ProductComponent } from '../../products/product/product';
+import { GameState } from '../../shared/GameState';
 
 @Component({
   selector: 'konbini-warehouse',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, ProductComponent],
   templateUrl: './warehouse.html',
   styleUrl: './warehouse.scss',
 })

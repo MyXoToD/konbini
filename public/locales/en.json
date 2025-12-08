@@ -4,11 +4,26 @@
     "settings": "Settings"
   },
   "products": {
-    "bread": {
-      "name": "Bread"
+    "cereal": {
+      "name": "Cereal"
     },
-    "cheese": {
-      "name": "Cheese"
+    "sliced-bread": {
+      "name": "Sliced Bread"
+    },
+    "flour": {
+      "name": "Flour"
+    },
+    "oil": {
+      "name": "Oil"
+    },
+    "pasta": {
+      "name": "Pasta"
+    },
+    "powdered-sugar": {
+      "name": "Powdered Sugar"
+    },
+    "bottled-water": {
+      "name": "Bottled Water"
     }
   },
   "money": "Money",

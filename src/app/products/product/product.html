@@ -1,0 +1,14 @@
+@if (product()) {
+  <div class="product">
+    <div class="product__header">
+      <div class="product__icon">
+        <img src="{{ product().icon }}" alt="{{ product().name }}" />
+      </div>
+      <div class="product__name">
+        {{ 'products.' + getProductTranslationKey() + '.name' | translate }}
+        <span>{{ product().description }}</span>
+      </div>
+    </div>
+    <div>Unit Price: {{ getWholesalePrice() }}</div>
+  </div>
+}
