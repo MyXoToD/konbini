@@ -3,6 +3,14 @@
     "warehouse": "Warehouse",
     "settings": "Settings"
   },
+  "products": {
+    "bread": {
+      "name": "Bread"
+    },
+    "cheese": {
+      "name": "Cheese"
+    }
+  },
   "money": "Money",
   "settings": {
     "sections": {

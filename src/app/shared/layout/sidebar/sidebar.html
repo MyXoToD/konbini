@@ -1,7 +1,10 @@
 <div class="sidebar">
-  <div>{{ 'money' | translate }}: {{ state.money() }}</div>
-
-  <button (click)="addMoney()">Add Money</button>
+  <div class="topbar">
+    <div>{{ 'money' | translate }}: {{ state.money() }}</div>
+    <button (click)="addMoney()">Add Money</button>
+    <div>Day: {{ state.day() }}</div>
+    <div>Time: {{ state.daytime() }}</div>
+  </div>
 
   <konbini-navigation></konbini-navigation>
 </div>

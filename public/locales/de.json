@@ -3,6 +3,14 @@
     "warehouse": "Lager",
     "settings": "Einstellungen"
   },
+  "products": {
+    "bread": {
+      "name": "Brot"
+    },
+    "cheese": {
+      "name": "Käse"
+    }
+  },
   "money": "Geld",
   "settings": {
     "sections": {

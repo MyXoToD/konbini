@@ -1,0 +1,30 @@
+:host {
+  display: contents;
+}
+
+.warehouse {
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+
+    .product {
+      border-radius: 0.5rem;
+      background-color: var(--c-elevation-1);
+      padding: 1rem;
+
+      &__header {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      &__icon {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

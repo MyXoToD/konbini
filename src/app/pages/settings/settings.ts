@@ -11,6 +11,7 @@ export class Settings {
   private readonly _translateService = inject(TranslateService);
 
   languages = ['en', 'de', 'jp'];
+  currentLanguage = this._translateService.getCurrentLang();
 
   changeLanguage(event: Event) {
     const value = (event.target as HTMLSelectElement).value;

@@ -42,6 +42,10 @@ jobs:
       - name: Build project
         run: ng build --base-href /konbini/
 
+      # Create index copy for gh-pages 404, tricking the server
+      - name: Copy index to 404
+        run: cp ./dist/konbini/browser/index.html ./dist/konbini/browser/404.html
+
       # Deploy to gh-pages
       - name: Setup Pages
         uses: actions/configure-pages@v5

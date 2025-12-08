@@ -2,6 +2,8 @@
 
 :root {
   --sidebar-width: 300px;
+  --topbar-height: 64px;
+  --menubar-height: 64px;
 
   --c-elevation-0: #121418;
   --c-elevation-1: rgba(255, 255, 255, 0.05);
@@ -31,11 +33,52 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+@media screen and (max-width: 768px) {
+  body {
+    grid-template-columns: 0px 100%;
+    grid-template-rows: var(--topbar-height) 1fr var(--menubar-height);
+    grid-template-areas:
+      'sidebar topbar'
+      'sidebar main'
+      'sidebar menubar';
+  }
+
+  .topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--topbar-height);
+    background: var(--c-elevation-1);
+    grid-area: topbar;
+  }
+
+  .main {
+    grid-area: main;
+    overflow-y: auto;
+  }
+
+  // .navigation {
+  //   width: 100vw;
+  //   height: var(--menubar-height);
+  //   display: flex;
+  //   justify-content: center;
+  //   grid-area: menubar;
+  //   background-color: var(--c-elevation-1);
+
+  //   .navigation__item {
+  //     padding: 0;
+  //     border-radius: 0;
+
+  //     span:not(fa-icon) {
+  //       display: none;
+  //     }
+
+  //     fa-icon {
+  //       width: var(--menubar-height);
+  //       height: var(--menubar-height);
+  //       line-height: var(--menubar-height);
+  //     }
+  //   }
+  // }
 }

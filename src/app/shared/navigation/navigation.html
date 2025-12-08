@@ -1,13 +1,11 @@
 <div class="navigation">
-  <div class="navigation__item">
-    <a routerLink="/warehouse" routerLinkActive="navigation__item--active">{{
-      'navigation.warehouse' | translate
-    }}</a>
+  <div class="navigation__item" routerLink="/warehouse" routerLinkActive="navigation__item--active">
+    <span><fa-icon [icon]="icons.warehouse" /></span>
+    <span>{{ 'navigation.warehouse' | translate }}</span>
   </div>
 
-  <div class="navigation__item">
-    <a routerLink="/settings" routerLinkActive="navigation__item--active">{{
-      'navigation.settings' | translate
-    }}</a>
+  <div class="navigation__item" routerLink="/settings" routerLinkActive="navigation__item--active">
+    <span><fa-icon [icon]="icons.settings" /></span>
+    <span>{{ 'navigation.settings' | translate }}</span>
   </div>
 </div>

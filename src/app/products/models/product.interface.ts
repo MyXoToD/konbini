@@ -5,6 +5,7 @@ export interface Product {
   name: string;
   prices: ProductPrices;
   description: string;
+  icon: string;
   inStock: number;
   unlocked: boolean;
 }
