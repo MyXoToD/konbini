@@ -1,7 +1,6 @@
-import { Component, computed, effect, input, Signal, signal } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCartShopping, faFileContract } from '@fortawesome/free-solid-svg-icons';
-import { Product } from '../../products/models/product.interface';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { CartProduct } from './models/cartProduct.interface';
 
 @Component({
@@ -13,11 +12,14 @@ import { CartProduct } from './models/cartProduct.interface';
 export class Cart {
   faShoppingCart = faCartShopping;
   showCart = false;
-  products = input<Signal<Product[]>>();
+  products = input.required<CartProduct[]>();
   // cart: any;
-  cart = computed(() => this.products());
+  cart: CartProduct[] = [];
 
   constructor() {
+    effect(() => {
+      this.cart = this.products();
+    });
     // effect(() => {
     //   console.log(this.products());
     //   this.cart = computed(() =>

@@ -81,7 +81,7 @@ export const productsFactory = (): Product[] => [
     unlocked: true,
   },
   {
-    id: 6,
+    id: 7,
     name: 'Bottled Water',
     prices: {
       wholesale: 2,

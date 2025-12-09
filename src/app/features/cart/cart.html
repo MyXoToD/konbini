@@ -2,8 +2,8 @@
   <div class="cart__content" [hidden]="!showCart">
     <h2>Products in Cart</h2>
 
-    @for (product of cart(); track product) {
-      <div>{{ product.productId }}</div>
+    @for (product of cart || []; track product.product.id) {
+      <div>{{ product.amount }}&times; {{ product.product.name }}</div>
     }
   </div>
 
