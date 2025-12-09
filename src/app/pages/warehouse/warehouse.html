@@ -1,7 +1,9 @@
 <div class="warehouse">
   <div class="warehouse__products">
     @for (product of products; track product) {
-      <konbini-product [product]="product"></konbini-product>
+      <konbini-product [product]="product" (addedToCart)="addToCart(product)"></konbini-product>
     }
   </div>
 </div>
+
+<konbini-cart [products]="$cartProducts"></konbini-cart>

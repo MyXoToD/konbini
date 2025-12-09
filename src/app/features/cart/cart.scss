@@ -1,0 +1,31 @@
+:host {
+  display: contents;
+}
+
+.cart {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+
+  &__button {
+    width: 48px;
+    height: 48px;
+    background-color: var(--c-accent);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 48px;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cart {
+    bottom: calc(var(--menubar-height) + 1rem);
+  }
+}

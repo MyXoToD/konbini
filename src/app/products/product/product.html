@@ -10,5 +10,11 @@
       </div>
     </div>
     <div>Unit Price: {{ getWholesalePrice() }}</div>
+    <div>In Stock: {{ product().inStock }}&times;</div>
+
+    <div class="product__order">
+      <div class="product__amount">1x</div>
+      <button class="product__buy" (click)="addToCart()">Add to cart</button>
+    </div>
   </div>
 }
