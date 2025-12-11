@@ -1,16 +1,17 @@
-import { Component, input, output, viewChild } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { TranslatePipe } from '@ngx-translate/core';
+import { CartProduct } from '../../features/cart/models/cartProduct.interface';
+import { Vibrate } from '../../shared/directives/vibrate';
 import { formatCurrency } from '../../shared/utils';
 import { Product } from '../models/product.interface';
-import { CartProduct } from '../../features/cart/models/cartProduct.interface';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'konbini-product',
   templateUrl: './product.html',
   styleUrls: ['./product.scss'],
-  imports: [TranslatePipe, FontAwesomeModule],
+  imports: [TranslatePipe, FontAwesomeModule, Vibrate],
 })
 export class ProductComponent {
   product = input.required<Product>();
@@ -20,6 +21,9 @@ export class ProductComponent {
     minus: faMinus,
     plus: faPlus,
   };
+  get totalPrice() {
+    return formatCurrency(this.product().prices.retail * this.amountToAdd);
+  }
 
   getProductTranslationKey(): string {
     return this.product().name.replace(/\s+/g, '-').toLowerCase();

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faGear, faShoppingBasket, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { TranslatePipe } from '@ngx-translate/core';
-import { faGear, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'konbini-navigation',
@@ -14,5 +14,6 @@ export class Navigation {
   icons = {
     warehouse: faWarehouse,
     settings: faGear,
+    shop: faShoppingBasket,
   };
 }

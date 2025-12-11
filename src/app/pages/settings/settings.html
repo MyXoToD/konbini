@@ -17,8 +17,17 @@
       </select>
     </div>
 
+    <div class="setting">
+      <label for="currency">Currency</label>
+      <select id="currency" (change)="changeCurrency($event)">
+        <option value="usd">Dollar ($)</option>
+        <option value="usd">Euro (€)</option>
+        <option value="usd">Yen (¥)</option>
+      </select>
+    </div>
+
     <ul>
-      <li>Currentcy</li>
+      <li>Currency</li>
       <li>Theme</li>
       <li>Save Game</li>
       <li>Load Game</li>
@@ -28,12 +37,30 @@
   <div class="settings__section">
     <h2>Sound Settings</h2>
 
+    <div class="setting">
+      <label for="music">Music</label>
+      <input
+        type="checkbox"
+        id="music"
+        [checked]="state.settings().music"
+        (change)="toggleMusic($event)"
+      />
+    </div>
+
+    <div class="setting">
+      <label for="vibration">Vibration</label>
+      <input
+        type="checkbox"
+        id="vibration"
+        [checked]="state.settings().vibration"
+        (change)="toggleVibration($event)"
+      />
+    </div>
+
     <ul>
-      <li>Music On/Off</li>
       <li>Music Volume</li>
       <li>Sound Effects On/Off</li>
       <li>Sound Effects Volume</li>
-      <li>Vibration On/Off</li>
     </ul>
   </div>
 

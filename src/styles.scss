@@ -6,7 +6,8 @@
   --menubar-height: 64px;
 
   --c-elevation-0: #121418;
-  --c-elevation-1: rgba(255, 255, 255, 0.05);
+  --c-elevation-1: #1e2024;
+  --c-elevation-2: rgba(255, 255, 255, 0.05);
 
   --c-text: #ccc;
   --c-accent: #3498db;
@@ -17,6 +18,7 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  user-select: none;
 
   &:before,
   &:after {

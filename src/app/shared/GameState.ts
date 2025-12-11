@@ -1,4 +1,5 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { GameSettings } from '../pages/settings/models/settings.interface';
 import { Product } from '../products/models/product.interface';
 import { ProductsService } from '../products/products.service';
 import { formatCurrency } from './utils';
@@ -20,6 +21,15 @@ export class GameState {
   readonly daytime = computed(() => this.formatDaytime());
   private _day = signal<number>(1);
   readonly day = this._day.asReadonly();
+
+  private _settings = signal<GameSettings>({
+    music: true,
+    soundEffects: true,
+    musicVolume: 1,
+    soundEffectsVolume: 1,
+    vibration: true,
+  });
+  settings = this._settings.asReadonly();
 
   private _previousTimestamp: number | null = null;
   private _config = {
@@ -78,5 +88,25 @@ export class GameState {
 
   addMoney(amount: number) {
     this._money.update((current) => current + amount);
+  }
+
+  spendMoney(amount: number) {
+    this._money.update((current) => current - amount);
+  }
+
+  updateSettings(newSettings: Partial<GameSettings>) {
+    this._settings.update((current) => ({ ...current, ...newSettings }));
+  }
+
+  addProductToInventory(product: Product, amount: number) {
+    this._products.update((current) => {
+      const existingProduct = current.find((p) => p.id === product.id);
+      if (existingProduct) {
+        return current.map((p) =>
+          p.id === product.id ? { ...p, inStock: p.inStock + amount } : p,
+        );
+      }
+      return [...current, { ...product, inStock: amount }];
+    });
   }
 }

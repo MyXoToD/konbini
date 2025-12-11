@@ -14,15 +14,17 @@
 
     <div class="product__order">
       <div class="product__amount-select">
-        <div class="product__amount-minus" (click)="amountMinus()">
+        <div class="product__amount-minus" (click)="amountMinus()" vibrate>
           <fa-icon [icon]="icons.minus"></fa-icon>
         </div>
         <div class="product__amount-value">{{ amountToAdd }}</div>
-        <div class="product__amount-plus" (click)="amountPlus()">
+        <div class="product__amount-plus" (click)="amountPlus()" vibrate>
           <fa-icon [icon]="icons.plus"></fa-icon>
         </div>
       </div>
-      <button class="product__buy" (click)="addToCart()">Add to cart</button>
+      <button class="product__buy" (click)="addToCart()" vibrate>
+        Add to cart ({{ totalPrice }})
+      </button>
     </div>
   </div>
 }

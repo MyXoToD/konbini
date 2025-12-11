@@ -2,12 +2,41 @@
   <div class="cart__content" [hidden]="!showCart">
     <h2>Products in Cart</h2>
 
-    @for (product of cart || []; track product.product.id) {
-      <div>{{ product.amount }}&times; {{ product.product.name }}</div>
-    }
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Amount</th>
+          <th>Unit Price</th>
+          <th colspan="2">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of cart || []; track product.product.id) {
+          <tr>
+            <td>{{ product.product.name }}</td>
+            <td>{{ product.amount }}</td>
+            <td>{{ formatPrice(product.product.prices.wholesale) }}</td>
+            <td>{{ formatPrice(product.product.prices.wholesale * product.amount) }}</td>
+            <td><fa-icon [icon]="trashIcon" (click)="removeProduct(product)"></fa-icon></td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Total</td>
+          <td>
+            {{ getTotalPrice() }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button class="cart__buy" (click)="placeOrder()" [disabled]="!canBuy()">Place Order</button>
   </div>
 
   <button class="cart__button" (click)="toggleCart()">
+    <div class="cart__item-count">{{ productCount }}</div>
     <fa-icon [icon]="faShoppingCart"></fa-icon>
   </button>
 </div>

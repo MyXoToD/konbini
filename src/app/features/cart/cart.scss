@@ -19,12 +19,45 @@
 
   &__content {
     position: absolute;
-    bottom: 48px;
+    bottom: calc(48px + 1rem);
     right: 0;
     background-color: var(--c-elevation-1);
     padding: 1rem;
     border-radius: 0.5rem;
     width: max-content;
+
+    table {
+      border-collapse: collapse;
+
+      tr {
+        &:nth-child(odd) {
+          background-color: var(--c-elevation-2);
+        }
+
+        th,
+        td {
+          padding: 0.5rem 1rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &__item-count {
+    position: absolute;
+    height: 1.5rem;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    transform: translate(50%, -50%);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: red;
+    top: 0;
+    right: 0;
   }
 }
 
