@@ -31,4 +31,32 @@
       opacity: 0.5;
     }
   }
+
+  &__order {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__amount-select {
+    border-radius: 0.5rem 0 0 0.5rem;
+    background-color: var(--c-elevation-1);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+  &__amount-minus,
+  &__amount-plus {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  &__amount-value {
+    text-align: center;
+  }
+  &__buy {
+    background-color: var(--c-accent);
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
 }

@@ -17,13 +17,12 @@ export class Warehouse {
   products: Product[] = this.state.products();
   cartProducts: CartProduct[] = [];
 
-  addToCart(product: Product) {
-    const cartProduct = this.cartProducts.find((cp) => cp.product.id === product.id);
+  addToCart(product: CartProduct) {
+    const cartProduct = this.cartProducts.find((cp) => cp.product.id === product.product.id);
     if (cartProduct) {
-      cartProduct.amount += 1;
+      cartProduct.amount += product.amount;
     } else {
-      this.cartProducts.push({ product, amount: 1 });
+      this.cartProducts.push(product);
     }
-    // this.cartProducts.update((products) => [...products, product]);
   }
 }

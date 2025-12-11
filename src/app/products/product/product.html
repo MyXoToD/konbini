@@ -13,7 +13,15 @@
     <div>In Stock: {{ product().inStock }}&times;</div>
 
     <div class="product__order">
-      <div class="product__amount">1x</div>
+      <div class="product__amount-select">
+        <div class="product__amount-minus" (click)="amountMinus()">
+          <fa-icon [icon]="icons.minus"></fa-icon>
+        </div>
+        <div class="product__amount-value">{{ amountToAdd }}</div>
+        <div class="product__amount-plus" (click)="amountPlus()">
+          <fa-icon [icon]="icons.plus"></fa-icon>
+        </div>
+      </div>
       <button class="product__buy" (click)="addToCart()">Add to cart</button>
     </div>
   </div>
