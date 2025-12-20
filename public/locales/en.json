@@ -2,7 +2,18 @@
   "navigation": {
     "shop": "Shop",
     "warehouse": "Warehouse",
+    "research": "Research",
     "settings": "Settings"
+  },
+  "cart": {
+    "title": "Products in Cart",
+    "tableColumns": {
+      "product": "Product",
+      "price": "Price",
+      "amount": "Amount",
+      "total": "Total"
+    },
+    "placeOrder": "Place Order"
   },
   "products": {
     "cereal": {
@@ -30,10 +41,14 @@
   "money": "Money",
   "settings": {
     "sections": {
-      "general": "General"
+      "general": "General",
+      "sound": "Sound Settings"
     },
     "language": {
       "label": "Language"
+    },
+    "currency": {
+      "label": "Currency"
     }
   },
   "languages": {

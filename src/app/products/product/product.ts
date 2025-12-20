@@ -22,7 +22,7 @@ export class ProductComponent {
     plus: faPlus,
   };
   get totalPrice() {
-    return formatCurrency(this.product().prices.retail * this.amountToAdd);
+    return formatCurrency(this.product().prices.wholesale * this.amountToAdd);
   }
 
   getProductTranslationKey(): string {

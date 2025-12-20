@@ -1,21 +1,27 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, Input, input, OnDestroy, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCartShopping, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { GameState } from '../../shared/GameState';
 import { formatCurrency } from '../../shared/utils';
 import { CartProduct } from './models/cartProduct.interface';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'konbini-cart',
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, TranslatePipe],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })
-export class Cart {
+export class Cart implements OnInit, OnDestroy {
   state = inject(GameState);
   faShoppingCart = faCartShopping;
   showCart = false;
-  products = input.required<CartProduct[]>();
+  // products = input.required<CartProduct[]>();
+
+  @Input() products$!: Observable<CartProduct>;
+  private destroy$ = new Subject<void>();
+
   // cart: any;
   cart: CartProduct[] = [];
   trashIcon = faTrashCan;
@@ -24,9 +30,9 @@ export class Cart {
   }
 
   constructor() {
-    effect(() => {
-      this.cart = this.products();
-    });
+    // effect(() => {
+    //   this.cart = this.products();
+    // });
     // effect(() => {
     //   console.log(this.products());
     //   this.cart = computed(() =>
@@ -35,12 +41,29 @@ export class Cart {
     // });
   }
 
+  ngOnInit() {
+    this.products$.subscribe((product) => {
+      if (!product) return;
+
+      let existing = this.cart.find((p) => p.product.id === product.product.id);
+      if (existing) {
+        existing.amount += product.amount;
+      } else {
+        this.cart.push(product);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   toggleCart() {
     this.showCart = !this.showCart;
   }
 
   removeProduct(product: CartProduct) {
-    // TODO: Needs improvment, can't add prodducts again after removing them
     this.cart = this.cart.filter((item) => item.product.id !== product.product.id);
   }
 
@@ -75,7 +98,5 @@ export class Cart {
 
     this.state.spendMoney(totalPrice);
     this.cart = [];
-
-    // TODO: Add products to inventory
   }
 }

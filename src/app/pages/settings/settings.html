@@ -18,11 +18,11 @@
     </div>
 
     <div class="setting">
-      <label for="currency">Currency</label>
-      <select id="currency" (change)="changeCurrency($event)">
+      <label for="currency">{{ 'settings.currency.label' | translate }}</label>
+      <select id="currency" (change)="changeCurrency($event)" [value]="state.settings().currency">
         <option value="usd">Dollar ($)</option>
-        <option value="usd">Euro (€)</option>
-        <option value="usd">Yen (¥)</option>
+        <option value="eur">Euro (€)</option>
+        <option value="jpy">Yen (¥)</option>
       </select>
     </div>
 
@@ -35,7 +35,7 @@
   </div>
 
   <div class="settings__section">
-    <h2>Sound Settings</h2>
+    <h2>{{ 'settings.sections.sound' | translate }}</h2>
 
     <div class="setting">
       <label for="music">Music</label>

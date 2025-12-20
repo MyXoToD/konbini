@@ -23,6 +23,8 @@ export class GameState {
   readonly day = this._day.asReadonly();
 
   private _settings = signal<GameSettings>({
+    language: 'en',
+    currency: 'usd',
     music: true,
     soundEffects: true,
     musicVolume: 1,

@@ -1,7 +1,19 @@
 {
   "navigation": {
+    "shop": "Geschäft",
     "warehouse": "Lager",
+    "research": "Forschung",
     "settings": "Einstellungen"
+  },
+  "cart": {
+    "title": "Produkte im Warenkorb",
+    "tableColumns": {
+      "product": "Produkt",
+      "price": "Preis",
+      "amount": "Menge",
+      "total": "Gesamt"
+    },
+    "placeOrder": "Bestellung aufgeben"
   },
   "products": {
     "bread": {
@@ -14,10 +26,14 @@
   "money": "Geld",
   "settings": {
     "sections": {
-      "general": "Allgemein"
+      "general": "Allgemein",
+      "sound": "Sound Einstellungen"
     },
     "language": {
       "label": "Sprache"
+    },
+    "currency": {
+      "label": "Währung"
     }
   },
   "languages": {

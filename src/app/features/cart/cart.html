@@ -1,14 +1,14 @@
 <div class="cart">
   <div class="cart__content" [hidden]="!showCart">
-    <h2>Products in Cart</h2>
+    <h2>{{ 'cart.title' | translate }}</h2>
 
     <table>
       <thead>
         <tr>
-          <th>Product</th>
-          <th>Amount</th>
-          <th>Unit Price</th>
-          <th colspan="2">Total Price</th>
+          <th>{{ 'cart.tableColumns.product' | translate }}</th>
+          <th>{{ 'cart.tableColumns.amount' | translate }}</th>
+          <th>{{ 'cart.tableColumns.price' | translate }}</th>
+          <th colspan="2">{{ 'cart.tableColumns.total' | translate }}</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="4">Total</td>
+          <td colspan="4">{{ 'cart.tableColumns.total' | translate }}</td>
           <td>
             {{ getTotalPrice() }}
           </td>
@@ -32,7 +32,9 @@
       </tfoot>
     </table>
 
-    <button class="cart__buy" (click)="placeOrder()" [disabled]="!canBuy()">Place Order</button>
+    <button class="cart__buy" (click)="placeOrder()" [disabled]="!canBuy()">
+      {{ 'cart.placeOrder' | translate }}
+    </button>
   </div>
 
   <button class="cart__button" (click)="toggleCart()">
