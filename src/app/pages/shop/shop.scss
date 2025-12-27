@@ -1,0 +1,9 @@
+.shelves {
+  display: grid;
+  gap: 1rem;
+
+  button {
+    display: block;
+    width: fit-content;
+  }
+}

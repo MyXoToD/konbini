@@ -1,0 +1,16 @@
+.shelf {
+  background-color: var(--c-elevation-1);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: max-content;
+
+  &__slot {
+    background-color: var(--c-elevation-0);
+    width: 64px;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+  }
+}

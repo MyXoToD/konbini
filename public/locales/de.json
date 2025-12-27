@@ -16,7 +16,7 @@
     "placeOrder": "Bestellung aufgeben"
   },
   "products": {
-    "bread": {
+    "sliced-bread": {
       "name": "Brot"
     },
     "cheese": {

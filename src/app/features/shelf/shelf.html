@@ -1,0 +1,11 @@
+<div class="shelf shelf--{{ shelf().type }}">
+  @for (slot of slots; track slot; let index = $index) {
+    <div class="shelf__slot">
+      @if (shelf().products[index]) {
+        {{ shelf().products[index].name }}
+      } @else {
+        Select
+      }
+    </div>
+  }
+</div>

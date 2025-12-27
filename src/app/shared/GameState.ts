@@ -1,6 +1,8 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { Shelf } from '../features/shelf/models/shelf.interface';
 import { GameSettings } from '../pages/settings/models/settings.interface';
 import { Product } from '../products/models/product.interface';
+import { StorageType } from '../products/models/storageType.enum';
 import { ProductsService } from '../products/products.service';
 import { formatCurrency } from './utils';
 
@@ -15,6 +17,14 @@ export class GameState {
   readonly moneyFormatted = computed(() => {
     return formatCurrency(this._money());
   });
+  private _shelves = signal<Shelf[]>([
+    {
+      type: StorageType.SHELF,
+      slots: 8,
+      products: [],
+    },
+  ]);
+  readonly shelves = this._shelves.asReadonly();
   private _products = signal<Product[]>(this._productsService.getAllProducts());
   readonly products = this._products.asReadonly();
   private _daytime = signal<Date>(new Date());
