@@ -26,6 +26,12 @@
       </select>
     </div>
 
+    @if (state.loggedInUser()) {
+      <p>Logged in as {{ state.loggedInUser().email }}!</p>
+    }
+
+    <div class="google-login"></div>
+
     <ul>
       <li>Currency</li>
       <li>Theme</li>

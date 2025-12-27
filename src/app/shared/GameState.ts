@@ -49,6 +49,9 @@ export class GameState {
     dayDuration: 20 * 60 * 1000,
   };
 
+  private _loggedInUser = signal<any>(null);
+  readonly loggedInUser = this._loggedInUser.asReadonly();
+
   constructor() {
     this.loadState();
     this._daytime().setHours(0, 0, 0, 0);
@@ -120,5 +123,9 @@ export class GameState {
       }
       return [...current, { ...product, inStock: amount }];
     });
+  }
+
+  setLoggedInUser(user: any) {
+    this._loggedInUser.set(user);
   }
 }
